@@ -9,4 +9,4 @@
 - docker-compose up --build
 ### After this containers wil be running, you can add postman collection in your workspace and try some requests
 
-## I did not add .env file to config, because it's only study project and won't be use in production
+## I did not add .env file to .gitignore, because it's only study project and won't be use in production
