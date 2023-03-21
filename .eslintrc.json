@@ -1,0 +1,39 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "decorator-position"
+  ],
+  "parserOptions": {
+    "browser": true,
+    "es2022": true,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": "warn",
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "prettier/prettier": "warn",
+    "no-multiple-empty-lines": [
+      "warn",
+      {
+        "max": 2
+      }
+    ],
+    "decorator-position/decorator-position": "warn"
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "build",
+    "dist",
+    "public"
+  ]
+}

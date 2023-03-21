@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "76a3b932-0dcb-44ef-88ec-b62cd48e6db4",
+    "name": "graphql-training-project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17156589"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "get all users",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"query\": \"{users { id name email }}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get user by id",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"query\": \"query($id: ID!){user(id: $id) {id name email}}\",\n    \"variables\": {\n        \"id\": 1\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation($id: ID!, $data: userUpdateInput!) { updateUser(id: $id, input: $data) {id, name, email}  }\",\n  \"variables\": {\n      \"id\": 1,\n      \"data\": {\n          \"name\": \"Ignat\"\n      }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation($id: ID!) { deleteUser(id: $id)  }\",\n  \"variables\": {\n      \"id\": 1\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "sign up",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "content-type": true
+            }
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "targethost",
+                "value": "http://medical.eigsoft.com",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation($data: signUpInput!) { signUp(input: $data) { id name email } }\",\n  \"variables\": {\n      \"data\": {\n        \"name\": \"BIG\",\n        \"email\": \"example@gmail.com\",\n        \"password\": \"admin\",\n        \"passwordCheck\": \"admin\"\n      }\n      \n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql/auth",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql", "auth"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "sign in",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"mutation($data: signInInput!) { signIn(input: $data) {id email name} }\",\n  \"variables\": {\n      \"data\": {\n          \"email\": \"example@gmail.com\",\n          \"password\": \"admin\"\n      }\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql/auth",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql", "auth"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
